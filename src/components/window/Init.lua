@@ -41,12 +41,12 @@ return function(Config)
 		ShadowTransparency = Config.ShadowTransparency or 0.6,
 		User = Config.User or {},
 		Footer = Config.Footer or {},
-		Topbar = Config.Topbar or { Height = 52, ButtonsType = "Default" }, -- Default or Mac
+		Topbar = Config.Topbar or { Height = 58, ButtonsType = "Default" }, -- Default or Mac
 
 		Size = Config.Size,
 
-		MinSize = Config.MinSize or Vector2.new(560, 350),
-		MaxSize = Config.MaxSize or Vector2.new(850, 560),
+		MinSize = Config.MinSize or Vector2.new(580, 380),
+		MaxSize = Config.MaxSize or Vector2.new(980, 680),
 
 		TopBarButtonIconSize = Config.TopBarButtonIconSize,
 
@@ -56,7 +56,7 @@ return function(Config)
 		Transparent = Config.Transparent or false,
 		HideSearchBar = Config.HideSearchBar ~= false,
 		ScrollBarEnabled = Config.ScrollBarEnabled or false,
-		SideBarWidth = Config.SideBarWidth or 200,
+		SideBarWidth = Config.SideBarWidth or 216,
 		Acrylic = Config.Acrylic or false,
 		NewElements = Config.NewElements or false,
 		IgnoreAlerts = Config.IgnoreAlerts or false,
@@ -66,8 +66,8 @@ return function(Config)
 		DragFrameSize = 160,
 
 		Position = UDim2.new(0.5, 0, 0.5, 0),
-		UICorner = 16, -- Window.Radius (16)
-		UIPadding = 14,
+		UICorner = 18, -- Window.Radius (18)
+		UIPadding = 16,
 		UIElements = {},
 		CanDropdown = true,
 		Closed = false,
@@ -89,7 +89,7 @@ return function(Config)
 
 		IsPC = false,
 
-		Gap = 5,
+		Gap = 8,
 
 		TopBarButtons = {},
 		AllElements = {},
@@ -119,7 +119,7 @@ return function(Config)
 	)
 
 	if Window.Topbar == {} then
-		Window.Topbar = { Height = 52, ButtonsType = "Default" }
+		Window.Topbar = { Height = 58, ButtonsType = "Default" }
 	end
 
 	if not RunService:IsStudio() and Window.Folder and writefile then

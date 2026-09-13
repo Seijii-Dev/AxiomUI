@@ -299,7 +299,7 @@ AxiomUI.Themes = require("./themes/Init")(AxiomUI, Creator)
 
 Creator.Themes = AxiomUI.Themes
 
-AxiomUI:SetTheme("Dark")
+AxiomUI:SetTheme("Axiom")
 AxiomUI:SetLanguage(Creator.Language)
 
 function AxiomUI:CreateWindow(Config)
@@ -327,7 +327,7 @@ function AxiomUI:CreateWindow(Config)
 
 	local CanLoadWindow = true
 
-	local Theme = AxiomUI.Themes[Config.Theme or "Dark"]
+	local Theme = AxiomUI.Themes[Config.Theme or "Axiom"]
 
 	--AxiomUI.Theme = Theme
 	Creator.SetTheme(Theme)

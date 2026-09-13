@@ -18,6 +18,10 @@
 > AxiomUI is currently in Beta.
 > This project is still under active development. Bugs, issues, and unstable features may occur. We’re constantly working on improvements, so please be patient and report any problems you encounter.
 
+### Axiom theme
+
+The default experience now uses the **Axiom** theme: a high-contrast graphite surface system with violet and cyan action states, clearer tab hierarchy, and more generous spacing. Existing themes remain available; pass `Theme = "Dark"`, `Theme = "Light"`, or any other registered theme to keep a specific visual style.
+
 ## Credits
 
 #### Icons (https://github.com/Footagesus/Icons)
