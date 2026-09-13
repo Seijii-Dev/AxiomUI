@@ -18,7 +18,7 @@ local Icons = require("../Icons/Main-v2")
 
 Icons.SetIconsType("lucide")
 
-local WindUI
+local AxiomUI
 
 local Creator
 Creator = {
@@ -126,12 +126,12 @@ Creator = {
 	ThemeChangeCallbacks = {},
 }
 
-function Creator.Init(WindUITable)
-	WindUI = WindUITable
+function Creator.Init(AxiomUITable)
+	AxiomUI = AxiomUITable
 
 	Creator.ThemeFallbacks = require("../themes/Fallbacks")(Creator)
 
-	Creator.UIScale = WindUITable.UIScale
+	Creator.UIScale = AxiomUITable.UIScale
 
 	DynamicShapeModule:Init(Creator)
 end
@@ -156,12 +156,12 @@ function Creator.SafeCallback(Function, ...)
 
 	local Success, Event = pcall(Function, ...)
 	if not Success then
-		if WindUI and WindUI.Window and WindUI.Window.Debug then
+		if AxiomUI and AxiomUI.Window and AxiomUI.Window.Debug then
 			local _, i = Event:find(":%d+: ")
 
-			warn("[ WindUI: DEBUG Mode ] " .. Event)
+			warn("[ AxiomUI: DEBUG Mode ] " .. Event)
 
-			return WindUI:Notify({
+			return AxiomUI:Notify({
 				Title = "DEBUG Mode: Error",
 				Content = not i and Event or Event:sub(i + 1),
 				Duration = 8,
@@ -171,8 +171,8 @@ function Creator.SafeCallback(Function, ...)
 end
 
 function Creator.Gradient(stops, props)
-	if WindUI and WindUI.Gradient then
-		return WindUI:Gradient(stops, props)
+	if AxiomUI and AxiomUI.Gradient then
+		return AxiomUI:Gradient(stops, props)
 	end
 
 	local colorSequence = {}
@@ -618,7 +618,7 @@ function Creator.SetDraggable(can)
 end
 
 function Creator.Drag(mainFrame, dragFrames, ondrag)
-	local CurInput = WindUI.GenerateGUID()
+	local CurInput = AxiomUI.GenerateGUID()
 
 	local currentDragFrame = nil
 	local dragging = false
@@ -659,11 +659,11 @@ function Creator.Drag(mainFrame, dragFrames, ondrag)
 				input.UserInputType == Enum.UserInputType.MouseButton1
 				or input.UserInputType == Enum.UserInputType.Touch
 			then
-				if WindUI and WindUI.CurrentInput and WindUI.CurrentInput ~= CurInput then
+				if AxiomUI and AxiomUI.CurrentInput and AxiomUI.CurrentInput ~= CurInput then
 					return
 				end
 
-				WindUI.CurrentInput = CurInput
+				AxiomUI.CurrentInput = CurInput
 
 				dragging = true
 				activeInput = input
@@ -682,7 +682,7 @@ function Creator.Drag(mainFrame, dragFrames, ondrag)
 		if not dragging then
 			return
 		end
-		if WindUI.CurrentInput and WindUI.CurrentInput ~= CurInput then
+		if AxiomUI.CurrentInput and AxiomUI.CurrentInput ~= CurInput then
 			return
 		end
 
@@ -698,7 +698,7 @@ function Creator.Drag(mainFrame, dragFrames, ondrag)
 	end)
 
 	UserInputService.InputEnded:Connect(function(input)
-		if not dragging or WindUI.CurrentInput ~= CurInput then
+		if not dragging or AxiomUI.CurrentInput ~= CurInput then
 			return
 		end
 
@@ -709,7 +709,7 @@ function Creator.Drag(mainFrame, dragFrames, ondrag)
 				and input.UserInputType == Enum.UserInputType.MouseButton1
 			)
 		then
-			WindUI.CurrentInput = nil
+			AxiomUI.CurrentInput = nil
 			dragging = false
 			activeInput = nil
 			currentDragFrame = nil
@@ -777,7 +777,7 @@ function Creator.Image(Img, Name, Corner, Folder, Type, IsThemeTag, Themed, Them
 		}).IconFrame
 		IconLabel.Parent = ImageFrame
 	elseif string.find(Img, "http") and not string.find(Img, "roblox.com") then
-		local FileName = "WindUI/" .. Folder .. "/assets/." .. Type .. "-" .. Name .. ".png"
+		local FileName = "AxiomUI/" .. Folder .. "/assets/." .. Type .. "-" .. Name .. ".png"
 		local success, response = pcall(function()
 			task.spawn(function()
 				local response = Creator.Request
@@ -798,7 +798,7 @@ function Creator.Image(Img, Name, Corner, Folder, Type, IsThemeTag, Themed, Them
 				else
 					warn(
 						string.format(
-							"[ WindUI.Creator ] Failed to load custom asset '%s': %s",
+							"[ AxiomUI.Creator ] Failed to load custom asset '%s': %s",
 							FileName,
 							tostring(asset)
 						)
@@ -811,7 +811,7 @@ function Creator.Image(Img, Name, Corner, Folder, Type, IsThemeTag, Themed, Them
 		end)
 		if not success then
 			warn(
-				"[ WindUI.Creator ]  '" .. identifyexecutor()
+				"[ AxiomUI.Creator ]  '" .. identifyexecutor()
 					or "Studio" .. "' doesnt support the URL Images. Error: " .. response
 			)
 

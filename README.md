@@ -1,21 +1,21 @@
-<!--<h1 align="center">WindUI</h1> -->
+<!--<h1 align="center">AxiomUI</h1> -->
 
 <!--
 <picture>
     <source srcset="docs/banner-dark.webp" media="(prefers-color-scheme: dark)">
     <source srcset="docs/banner-light.webp" media="(prefers-color-scheme: light)">
-    <img src="docs/banner-light.webp" alt="WindUI Banner">
+    <img src="docs/banner-light.webp" alt="AxiomUI Banner">
 </picture>-->
 
-<img src="docs/WindUI – Themes.png" alt="WindUI Banner">
+<img src="docs/AxiomUI – Themes.png" alt="AxiomUI Banner">
 
-[![Wind Ui](https://uibin.orqan.xyz/api/card?id=341a345c-b3c9-42fe-a45c-eb296580ce61&theme=green)](https://uibin.orqan.xyz/library/341a345c-b3c9-42fe-a45c-eb296580ce61)
-
-> [!WARNING]
-> This WindUI was not inspired by, and the name has nothing to do with UI Frameworks
+[![AxiomUI](https://uibin.orqan.xyz/api/card?id=341a345c-b3c9-42fe-a45c-eb296580ce61&theme=green)](https://uibin.orqan.xyz/library/341a345c-b3c9-42fe-a45c-eb296580ce61)
 
 > [!WARNING]
-> WindUI is currently in Beta.
+> This AxiomUI was not inspired by, and the name has nothing to do with UI Frameworks
+
+> [!WARNING]
+> AxiomUI is currently in Beta.
 > This project is still under active development. Bugs, issues, and unstable features may occur. We’re constantly working on improvements, so please be patient and report any problems you encounter.
 
 ## Credits
@@ -31,9 +31,9 @@
 ### Links
 
 - [Discord Server](https://discord.gg/ftgs-development-hub-1300692552005189632)
-- [Documentation](https://footagesus.github.io/treehub-web/docs/windui)
-- [Installation](https://footagesus.github.io/WindUI-Docs/docs/installation)
+- [Documentation](https://footagesus.github.io/treehub-web/docs/axiomui)
+- [Installation](https://footagesus.github.io/AxiomUI-Docs/docs/installation)
 - [Example](/main_example.lua) (wip)
     ```luau
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/Footagesus/WindUI/refs/heads/main/main_example.lua'))()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/Seijii-Dev/AxiomUI/refs/heads/main/main_example.lua'))()
     ```

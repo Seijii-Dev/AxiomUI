@@ -1,10 +1,10 @@
 {
-    "name": "WindUI",
+    "name": "AxiomUI",
     "tree": {
         "$className": "DataModel",
 
         "ReplicatedStorage": {
-            "WindUI": {
+            "AxiomUI": {
                 "$path": "src/"
             },
             "build": {

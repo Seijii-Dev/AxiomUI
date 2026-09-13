@@ -1,6 +1,6 @@
-local WindUI = require("../src/Init")
+local AxiomUI = require("../src/Init")
 
-local Window = WindUI:CreateWindow({
+local Window = AxiomUI:CreateWindow({
 	Title = "ProgressBar Test",
 })
 

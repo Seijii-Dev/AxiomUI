@@ -1,5 +1,5 @@
 {
-    "name": "WindUI",
+    "name": "AxiomUI",
     "className": "DataModel",
     "filePaths": ["default.project.json"],
     "children": [
@@ -8,7 +8,7 @@
             "className": "ReplicatedStorage",
             "children": [
                 {
-                    "name": "WindUI",
+                    "name": "AxiomUI",
                     "className": "ModuleScript",
                     "filePaths": ["src/init.lua"],
                     "children": [

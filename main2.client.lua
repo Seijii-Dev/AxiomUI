@@ -1,5 +1,5 @@
 --[[
-    WindUI Example 2
+    AxiomUI Example 2
 ]]
 
 local cloneref = (cloneref or clonereference or function(instance)
@@ -8,7 +8,7 @@ end)
 local ReplicatedStorage = cloneref(game:GetService("ReplicatedStorage"))
 local RunService = cloneref(game:GetService("RunService"))
 
-local WindUI
+local AxiomUI
 
 do
 	local ok, result = pcall(function()
@@ -16,22 +16,22 @@ do
 	end)
 
 	if ok then
-		WindUI = result
+		AxiomUI = result
 	else
 		if RunService:IsStudio() or not writefile then
-			WindUI = require(ReplicatedStorage:WaitForChild("WindUI"):WaitForChild("Init"))
+			AxiomUI = require(ReplicatedStorage:WaitForChild("AxiomUI"):WaitForChild("Init"))
 		else
-			WindUI =
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/Footagesus/WindUI/main/dist/main.lua"))()
+			AxiomUI =
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/Seijii-Dev/AxiomUI/main/dist/main.lua"))()
 		end
 	end
 end
 
---WindUI.TransparencyValue = .9
+--AxiomUI.TransparencyValue = .9
 local ThemeName = "Dark"
 
-local Window = WindUI:CreateWindow({
-	Title = "WindUI Library",
+local Window = AxiomUI:CreateWindow({
+	Title = "AxiomUI Library",
 	Author = "by .ftgs",
 	Icon = "solar:wind-bold",
 	Theme = ThemeName,
@@ -86,8 +86,8 @@ local InfoTab = Window:Tab({
 })
 
 InfoTab:Paragraph({
-	Title = "WindUI",
-	Desc = "WindUI is a open source UI library for Roblox Script Hubs",
+	Title = "AxiomUI",
+	Desc = "AxiomUI is a open source UI library for Roblox Script Hubs",
 	Buttons = {
 		{
 			Title = "GitHub",

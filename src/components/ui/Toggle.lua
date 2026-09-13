@@ -368,7 +368,7 @@ function Toggle.New(Value, Icon, IconSize, Parent, Callback, NewElement, Config)
 					endConnection = nil
 				end
 
-				Config.WindUI.CurrentInput = nil
+				Config.AxiomUI.CurrentInput = nil
 
 				if isScrolling then
 					return

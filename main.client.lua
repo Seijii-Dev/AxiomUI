@@ -1,7 +1,7 @@
 local RunService = game:GetService("RunService")
 --[[
 
-    WindUI Example (wip)
+    AxiomUI Example (wip)
     
 ]]
 
@@ -11,7 +11,7 @@ end)
 local ReplicatedStorage = cloneref(game:GetService("ReplicatedStorage"))
 local HttpService = cloneref(game:GetService("HttpService"))
 
-local WindUI
+local AxiomUI
 
 do
 	local ok, result = pcall(function()
@@ -19,20 +19,20 @@ do
 	end)
 
 	if ok then
-		WindUI = result
+		AxiomUI = result
 	else
 		if cloneref(game:GetService("RunService")):IsStudio() then
-			WindUI = require(cloneref(ReplicatedStorage:WaitForChild("WindUI"):WaitForChild("Init")))
+			AxiomUI = require(cloneref(ReplicatedStorage:WaitForChild("AxiomUI"):WaitForChild("Init")))
 		else
-			WindUI =
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/Footagesus/WindUI/main/dist/main.lua"))()
+			AxiomUI =
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/Seijii-Dev/AxiomUI/main/dist/main.lua"))()
 		end
 	end
 end
 
 --[[
 
-WindUI.Creator.AddIcons("solar", {
+AxiomUI.Creator.AddIcons("solar", {
     ["CheckSquareBold"] = "rbxassetid://132438947521974",
     ["CursorSquareBold"] = "rbxassetid://120306472146156",
     ["FileTextBold"] = "rbxassetid://89294979831077",
@@ -45,8 +45,8 @@ WindUI.Creator.AddIcons("solar", {
 })--]]
 
 function createPopup()
-	return WindUI:Popup({
-		Title = "Welcome to the WindUI!",
+	return AxiomUI:Popup({
+		Title = "Welcome to the AxiomUI!",
 		Icon = "bird",
 		Content = "Hello!",
 		Buttons = {
@@ -70,8 +70,8 @@ function createPopup()
 end
 
 -- */  Window  /* --
-local Window = WindUI:CreateWindow({
-	Title = ".ftgs hub  |  WindUI Example",
+local Window = AxiomUI:CreateWindow({
+	Title = ".ftgs hub  |  AxiomUI Example",
 	--Author = "by .ftgs • Footagesus",
 	Folder = "ftgshub",
 	Icon = "solar:folder-2-bold-duotone",
@@ -109,7 +109,7 @@ local Window = WindUI:CreateWindow({
 -- */  Tags  /* --
 do
 	Window:Tag({
-		Title = "v" .. WindUI.Version,
+		Title = "v" .. AxiomUI.Version,
 		Icon = "github",
 		Color = Color3.fromHex("#1c1c1c"),
 		Border = true,
@@ -253,7 +253,7 @@ end
 -- */  About Tab  /* --
 do
 	local AboutTab = Window:Tab({
-		Title = "About WindUI",
+		Title = "About AxiomUI",
 		Desc = "Description Example",
 		Icon = "solar:info-square-bold",
 		IconColor = Grey,
@@ -262,7 +262,7 @@ do
 	})
 
 	local AboutSection = AboutTab:Section({
-		Title = "About WindUI",
+		Title = "About AxiomUI",
 	})
 
 	AboutSection:Image({
@@ -274,7 +274,7 @@ do
 	AboutSection:Space({ Columns = 3 })
 
 	AboutSection:Section({
-		Title = "What is WindUI?",
+		Title = "What is AxiomUI?",
 		TextSize = 24,
 		FontWeight = Enum.FontWeight.SemiBold,
 	})
@@ -282,7 +282,7 @@ do
 	AboutSection:Space()
 
 	AboutSection:Section({
-		Title = "WindUI is a stylish, open-source UI (User Interface) library specifically designed for Roblox Script Hubs.\nDeveloped by Footagesus (.ftgs, Footages).\nIt aims to provide developers with a modern, customizable, and easy-to-use toolkit for creating visually appealing interfaces within Roblox.\nThe project is primarily written in Lua (Luau), the scripting language used in Roblox.",
+		Title = "AxiomUI is a stylish, open-source UI (User Interface) library specifically designed for Roblox Script Hubs.\nDeveloped by Footagesus (.ftgs, Footages).\nIt aims to provide developers with a modern, customizable, and easy-to-use toolkit for creating visually appealing interfaces within Roblox.\nThe project is primarily written in Lua (Luau), the scripting language used in Roblox.",
 		TextSize = 18,
 		TextTransparency = 0.35,
 		FontWeight = Enum.FontWeight.Medium,
@@ -293,15 +293,15 @@ do
 	-- Default buttons
 
 	AboutTab:Button({
-		Title = "Export WindUI JSON (copy)",
+		Title = "Export AxiomUI JSON (copy)",
 		Color = Color3.fromHex("#a2ff30"),
 		Justify = "Center",
 		IconAlign = "Left",
 		Icon = "", -- removing icon
 		Callback = function()
-			tableToClipboard(WindUI)
-			WindUI:Notify({
-				Title = "WindUI JSON",
+			tableToClipboard(AxiomUI)
+			AxiomUI:Notify({
+				Title = "AxiomUI JSON",
 				Content = "Copied to Clipboard!",
 			})
 		end,
@@ -553,9 +553,9 @@ do
 		Title = "Notify Button",
 		--Desc = "Button example",
 		Callback = function()
-			WindUI:Notify({
+			AxiomUI:Notify({
 				Title = "Hello",
-				Content = "Welcome to the WindUI Example!",
+				Content = "Welcome to the AxiomUI Example!",
 				Icon = "solar:bell-bold",
 				Duration = 5,
 				CanClose = false,
@@ -567,9 +567,9 @@ do
 		Title = "Notify Button 2",
 		--Desc = "Button example",
 		Callback = function()
-			WindUI:Notify({
+			AxiomUI:Notify({
 				Title = "Hello",
-				Content = "Welcome to the WindUI Example!",
+				Content = "Welcome to the AxiomUI Example!",
 				--Icon = "solar:bell-bold",
 				Duration = 5,
 				CanClose = false,
@@ -877,7 +877,7 @@ if not RunService:IsStudio() and writefile and printidentity() then
 			Border = true,
 		})
 
-		-- All elements are taken from the official documentation: https://footagesus.github.io/WindUI-Docs/docs
+		-- All elements are taken from the official documentation: https://footagesus.github.io/AxiomUI-Docs/docs
 
 		-- Saving elements to the config using `Flag`
 
@@ -1091,7 +1091,7 @@ if not RunService:IsStudio() and writefile and printidentity() then
 			Callback = function()
 				Window.CurrentConfig = ConfigManager:Config(ConfigName)
 				if Window.CurrentConfig:Save() then
-					WindUI:Notify({
+					AxiomUI:Notify({
 						Title = "Config Saved",
 						Desc = "Config '" .. ConfigName .. "' saved",
 						Icon = "check",
@@ -1111,7 +1111,7 @@ if not RunService:IsStudio() and writefile and printidentity() then
 			Callback = function()
 				Window.CurrentConfig = ConfigManager:CreateConfig(ConfigName)
 				if Window.CurrentConfig:Load() then
-					WindUI:Notify({
+					AxiomUI:Notify({
 						Title = "Config Loaded",
 						Desc = "Config '" .. ConfigName .. "' loaded",
 						Icon = "refresh-cw",
@@ -1138,12 +1138,12 @@ do
 	local InviteCode = "ftgs-development-hub-1300692552005189632"
 	local DiscordAPI = "https://discord.com/api/v10/invites/" .. InviteCode .. "?with_counts=true&with_expiration=true"
 
-	local Response = WindUI.cloneref(game:GetService("HttpService"))
-		:JSONDecode(WindUI.Creator.Request and WindUI.Creator.Request({
+	local Response = AxiomUI.cloneref(game:GetService("HttpService"))
+		:JSONDecode(AxiomUI.Creator.Request and AxiomUI.Creator.Request({
 			Url = DiscordAPI,
 			Method = "GET",
 			Headers = {
-				["User-Agent"] = "WindUI/Example",
+				["User-Agent"] = "AxiomUI/Example",
 				["Accept"] = "application/json",
 			},
 		}).Body or "{}")
@@ -1193,7 +1193,7 @@ do
 						if setclipboard then
 							setclipboard("https://discord.gg/" .. InviteCode)
 						else
-							WindUI:Notify({
+							AxiomUI:Notify({
 								Title = "Discord Invite Link",
 								Content = "https://discord.gg/" .. InviteCode,
 							})

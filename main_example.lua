@@ -1,8 +1,8 @@
 --[[
-    WindUI Example 
+    AxiomUI Example
 
     example moved to main.client.lua
 ]]
 
 
-loadstring(game:HttpGet('https://raw.githubusercontent.com/Footagesus/WindUI/refs/heads/main/main.client.lua'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Seijii-Dev/AxiomUI/refs/heads/main/main.client.lua'))()

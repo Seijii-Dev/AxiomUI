@@ -9,7 +9,7 @@
     To view the source code, see the `src/` folder on the official GitHub repository.
     
     Author: Footagesus (Footages, .ftgs, oftgs)
-    Github: https://github.com/Footagesus/WindUI
+    Github: https://github.com/Seijii-Dev/AxiomUI
     Discord: https://discord.gg/ftgs-development-hub-1300692552005189632
     License: MIT
 ]]
@@ -22,7 +22,7 @@ Height:number?,
 Focused:boolean,
 
 Window:any,
-WindUI:any,
+AxiomUI:any,
 Tab:any,
 Parent:Instance,
 }local a a={cache={}, load=function(b)if not a.cache[b]then a.cache[b]={c=a[b]()}end return a.cache[b].c end}do function a.a()
@@ -25015,7 +25015,7 @@ if not u then
 if m and m.Window and m.Window.Debug then local
 x, z=v:find":%d+: "
 
-warn("[ WindUI: DEBUG Mode ] "..v)
+warn("[ AxiomUI: DEBUG Mode ] "..v)
 
 return m:Notify{
 Title="DEBUG Mode: Error",
@@ -25633,7 +25633,7 @@ Colors={
 }.IconFrame
 J.Parent=H
 elseif string.find(v,"http")and not string.find(v,"roblox.com")then
-local J="WindUI/"..A.."/assets/."..B.."-"..x..".png"
+local J="AxiomUI/"..A.."/assets/."..B.."-"..x..".png"
 local L,M=pcall(function()
 task.spawn(function()
 local L=p.Request
@@ -25654,7 +25654,7 @@ H.ImageLabel.Image=N
 else
 warn(
 string.format(
-"[ WindUI.Creator ] Failed to load custom asset '%s': %s",
+"[ AxiomUI.Creator ] Failed to load custom asset '%s': %s",
 J,
 tostring(N)
 )
@@ -25667,7 +25667,7 @@ end)
 end)
 if not L then
 warn(
-"[ WindUI.Creator ]  '"..identifyexecutor()
+"[ AxiomUI.Creator ]  '"..identifyexecutor()
 or"Studio".."' doesnt support the URL Images. Error: "..M
 )
 
@@ -26716,10 +26716,10 @@ New=a.load'p'.New
 
 return[[
 {
-    "name": "windui",
+    "name": "axiomui",
     "version": "1.6.66",
     "main": "./dist/main.lua",
-    "repository": "https://github.com/Footagesus/WindUI",
+    "repository": "https://github.com/Seijii-Dev/AxiomUI",
     "discord": "https://discord.gg/ftgs-development-hub-1300692552005189632",
     "author": "Footagesus",
     "description": "Roblox UI Library for scripts",
@@ -27038,7 +27038,7 @@ UICorner=28,
 UIPadding=12,
 
 Window=ag,
-WindUI=ah,
+AxiomUI=ah,
 
 UIElements={},
 }
@@ -27211,7 +27211,7 @@ local af=a.load't'.New
 
 function aa.new(ag,ah,ai,aj)
 local ak=a.load'u'
-local al=ak.Create(true,"Popup",ag.Window,ag.WindUI,ag.WindUI.ScreenGui.KeySystem)
+local al=ak.Create(true,"Popup",ag.Window,ag.AxiomUI,ag.AxiomUI.ScreenGui.KeySystem)
 
 local am={}
 
@@ -27507,7 +27507,7 @@ PaddingBottom=UDim.new(0,10),
 })
 
 for i,l in next,ag.KeySystem.API do
-local m=ag.WindUI.Services[l.Type]
+local m=ag.AxiomUI.Services[l.Type]
 if m then
 local p={}
 for r,u in next,m.Args do
@@ -27593,7 +27593,7 @@ ad(v,0.08,{ImageTransparency=1}):Play()
 end)
 ab.AddSignal(v.MouseButton1Click,function()
 r.Copy()
-ag.WindUI:Notify{
+ag.AxiomUI:Notify{
 Title="Key System",
 Content="Key link copied to clipboard.",
 Image="key",
@@ -27649,7 +27649,7 @@ task.wait(0.4)
 ai(true)
 end
 else
-ag.WindUI:Notify{
+ag.AxiomUI:Notify{
 Title="Key System. Error",
 Content="Invalid key.",
 Icon="triangle-alert",
@@ -27682,7 +27682,7 @@ end
 if b then
 handleSuccess(aA)
 else
-ag.WindUI:Notify{
+ag.AxiomUI:Notify{
 Title="Key System. Error",
 Content=d,
 Icon="triangle-alert",
@@ -28078,7 +28078,7 @@ IconSize=22,
 }
 
 local ah=a.load'u'
-local ai=ah.Create(true,"Popup",ae.WindUI.Window,ae.WindUI,af)
+local ai=ah.Create(true,"Popup",ae.AxiomUI.Window,ae.AxiomUI,af)
 
 local aj=200
 
@@ -28099,7 +28099,7 @@ al=ab.Image(
 ag.Icon,
 ag.Title..":"..ag.Icon,
 0,
-ae.WindUI.Window,
+ae.AxiomUI.Window,
 "Popup",
 true,
 ae.IconThemed,
@@ -29139,17 +29139,17 @@ end
 
 function ae.Init(af,ag)
 if not ag.Folder then
-warn"[ WindUI.ConfigManager ] Window.Folder is not specified."
+warn"[ AxiomUI.ConfigManager ] Window.Folder is not specified."
 return false
 end
 if ab:IsStudio()or not writefile then
-warn"[ WindUI.ConfigManager ] The config system doesn't work in the studio."
+warn"[ AxiomUI.ConfigManager ] The config system doesn't work in the studio."
 return false
 end
 
 ad=ag
 ae.Folder=ad.Folder
-ae.Path="WindUI/"..tostring(ae.Folder).."/config/"
+ae.Path="AxiomUI/"..tostring(ae.Folder).."/config/"
 
 if not isfolder(ae.Path)then
 makefolder(ae.Path)
@@ -29168,7 +29168,7 @@ end
 
 function ae.SetPath(af,ag)
 if not ag then
-warn"[ WindUI.ConfigManager ] Custom path is not specified."
+warn"[ AxiomUI.ConfigManager ] Custom path is not specified."
 return false
 end
 
@@ -29252,7 +29252,7 @@ end
 
 local ak,al=pcall(function()
 local ak=readfile or function()
-warn"[ WindUI.ConfigManager ] The config system doesn't work in the studio."
+warn"[ AxiomUI.ConfigManager ] The config system doesn't work in the studio."
 return nil
 end
 return ac:JSONDecode(ak(ai.Path))
@@ -29339,9 +29339,9 @@ local al,am=pcall(function()
 return ai:Load()
 end)
 if al then
-if ad.Debug then print("[ WindUI.ConfigManager ] AutoLoaded config: "..ag)end
+if ad.Debug then print("[ AxiomUI.ConfigManager ] AutoLoaded config: "..ag)end
 else
-warn("[ WindUI.ConfigManager ] Failed to AutoLoad config: "..ag.." - "..tostring(am))
+warn("[ AxiomUI.ConfigManager ] Failed to AutoLoad config: "..ag.." - "..tostring(am))
 end
 end)
 end
@@ -31122,7 +31122,7 @@ as:Disconnect()
 as=nil
 end
 
-al.WindUI.CurrentInput=nil
+al.AxiomUI.CurrentInput=nil
 
 if aB then
 return
@@ -31361,7 +31361,7 @@ end
 
 ai:Set(ak,false,ah.Window.NewElements)
 
-local an=ah.WindUI.GenerateGUID()
+local an=ah.AxiomUI.GenerateGUID()
 
 if ah.Window.NewElements and am.Animate then
 if ai.Type=="Toggle"then
@@ -31373,11 +31373,11 @@ ao.UserInputType==Enum.UserInputType.MouseButton1
 or ao.UserInputType==Enum.UserInputType.Touch
 )
 then
-if ah.WindUI.CurrentInput and ah.WindUI.CurrentInput~=an then
+if ah.AxiomUI.CurrentInput and ah.AxiomUI.CurrentInput~=an then
 return
 end
 
-ah.WindUI.CurrentInput=an
+ah.AxiomUI.CurrentInput=an
 am:Animate(ao,ai)
 end
 end)
@@ -31708,7 +31708,7 @@ ao:Disconnect()
 ai=false
 ay.ScrollingEnabled=true
 
-ak.WindUI.CurrentInput=nil
+ak.AxiomUI.CurrentInput=nil
 
 if ak.Window.NewElements then
 ag(al.UIElements.SliderIcon.Frame.Thumb,0.2,{
@@ -31788,7 +31788,7 @@ end
 end
 end)
 
-local az=ak.WindUI.GenerateGUID()
+local az=ak.AxiomUI.GenerateGUID()
 
 ae.AddSignal(al.UIElements.SliderContainer.InputBegan,function(aA)
 if al.Locked or ai then
@@ -31798,10 +31798,10 @@ if
 aA.UserInputType==Enum.UserInputType.MouseButton1
 or aA.UserInputType==Enum.UserInputType.Touch
 then
-if ak.WindUI.CurrentInput and ak.WindUI.CurrentInput~=az then
+if ak.AxiomUI.CurrentInput and ak.AxiomUI.CurrentInput~=az then
 return
 end
-ak.WindUI.CurrentInput=az
+ak.AxiomUI.CurrentInput=az
 
 al:Set(ap,aA)
 
@@ -32529,7 +32529,7 @@ Position=UDim2.new(-10,0,-10,0),
 Visible=false,
 Active=false,
 
-Parent=ao.WindUI.DropdownGui,
+Parent=ao.AxiomUI.DropdownGui,
 AnchorPoint=Vector2.new(1,0),
 },{
 ap.UIElements.Menu,
@@ -32545,7 +32545,7 @@ UDim2.fromOffset(0,ap.UIElements.UIListLayout.AbsoluteContentSize.Y)
 end
 
 local function RecalculateListSize()
-local at=ao.WindUI.DropdownGui.AbsoluteSize.Y
+local at=ao.AxiomUI.DropdownGui.AbsoluteSize.Y
 
 local au=ap.UIElements.UIListLayout.AbsoluteContentSize.Y/ao.UIScale
 local av=ap.SearchBarEnabled and(aq.SearchBarHeight+(aq.MenuPadding*3))
@@ -33800,7 +33800,7 @@ am.OnCopy()
 end
 end)
 if not ap then
-al.WindUI:Notify{
+al.AxiomUI:Notify{
 Title="Error",
 Content="The "..ao.." is not copied. Error: "..aq,
 Icon="x",
@@ -33808,7 +33808,7 @@ Duration=5,
 }
 end
 end
-end,al.WindUI.UIScale)
+end,al.AxiomUI.UIScale)
 
 function am.SetCode(ap,aq)
 ao.Set(aq)
@@ -34711,7 +34711,7 @@ aa.AddSignal(aw.UIElements.Colorpicker.MouseButton1Click,function()
 if ax and not aw.IsShowed then
 aw.IsShowed=true
 
-as:Colorpicker(aw,av.Window,av.WindUI,function(ay,az)
+as:Colorpicker(aw,av.Window,av.AxiomUI,function(ay,az)
 aw:Update(ay,az)
 aw.Default=ay
 aw.Transparency=az
@@ -34954,7 +34954,7 @@ end)
 
 local au=am.ElementsModule
 
-au.Load(an,at.Outline.Content,au.Elements,am.Window,am.WindUI,function()
+au.Load(an,at.Outline.Content,au.Elements,am.Window,am.AxiomUI,function()
 if not an.Expandable then
 an.Expandable=true
 ap.Visible=true
@@ -35224,7 +35224,7 @@ am,
 an,
 ao.Elements,
 al.Window,
-al.WindUI,
+al.AxiomUI,
 function(ap,aq)
 local ar=al.Tab and al.Tab.Gap or(al.Window.NewElements and 1 or 6)
 
@@ -35310,7 +35310,7 @@ am,
 an,
 ao.Elements,
 al.Window,
-al.WindUI,
+al.AxiomUI,
 function(ap,aq)
 local ar=al.Tab and al.Tab.Gap or(al.Window.NewElements and 1 or 6)
 
@@ -35410,7 +35410,7 @@ am,
 an,
 ao.Elements,
 al.Window,
-al.WindUI,
+al.AxiomUI,
 
 
 
@@ -35537,7 +35537,7 @@ and au.Y>=av.Y
 and au.Y<=av.Y+aw.Y
 end
 
-local au=an.WindUI.GenerateGUID()
+local au=an.AxiomUI.GenerateGUID()
 
 ai.AddSignal(at.CanvasGroup.Viewport.MouseEnter,function()
 if ao.Interactive then
@@ -35560,11 +35560,11 @@ if
 (av.UserInputType==Enum.UserInputType.MouseButton1)
 or(av.UserInputType==Enum.UserInputType.Touch and not aq)
 then
-if an.WindUI.CurrentInput and an.WindUI.CurrentInput~=au then
+if an.AxiomUI.CurrentInput and an.AxiomUI.CurrentInput~=au then
 return
 end
 
-an.WindUI.CurrentInput=au
+an.AxiomUI.CurrentInput=au
 
 ap=true
 as=av.Position
@@ -35578,11 +35578,11 @@ if
 av.UserInputType==Enum.UserInputType.MouseButton1
 or av.UserInputType==Enum.UserInputType.Touch
 then
-if an.WindUI.CurrentInput and an.WindUI.CurrentInput~=au then
+if an.AxiomUI.CurrentInput and an.AxiomUI.CurrentInput~=au then
 return
 end
 
-an.WindUI.CurrentInput=nil
+an.AxiomUI.CurrentInput=nil
 
 ap=false
 end
@@ -35732,7 +35732,7 @@ at.Index=#aa.Elements+1
 at.GlobalIndex=#ak.AllElements+1
 at.Parent=af
 at.Window=ak
-at.WindUI=al
+at.AxiomUI=al
 at.UIScale=ao
 at.ElementsModule=an local
 
@@ -35756,7 +35756,7 @@ if ay then
 ak.PendingConfigData[at.Flag]=nil
 else
 warn(
-"[ WindUI ] Failed to apply pending config for '"
+"[ AxiomUI ] Failed to apply pending config for '"
 ..at.Flag
 .."': "
 ..tostring(az)
@@ -35881,7 +35881,7 @@ OnChangeFunc=function(ao)end,
 
 function ao.Init(ap,aq,ar,as)
 Window=ap
-WindUI=aq
+AxiomUI=aq
 ao.ToolTipParent=ar
 ao.TabHighlight=as
 return ao
@@ -36210,7 +36210,7 @@ ar.UIElements.ContainerFrame,
 ar.UIElements.ContainerFrameCanvas.ScrollSliderHolder,
 Window,
 4,
-WindUI
+AxiomUI
 )
 end
 
@@ -36308,7 +36308,7 @@ ar,
 ar.UIElements.ContainerFrame,
 aA.Elements,
 Window,
-WindUI,
+AxiomUI,
 nil,
 aA,
 aq,
@@ -37353,11 +37353,11 @@ aw.Topbar={Height=52,ButtonsType="Default"}
 end
 
 if not ai:IsStudio()and aw.Folder and writefile then
-if not isfolder("WindUI/"..aw.Folder)then
-makefolder("WindUI/"..aw.Folder)
+if not isfolder("AxiomUI/"..aw.Folder)then
+makefolder("AxiomUI/"..aw.Folder)
 end
-if not isfolder("WindUI/"..aw.Folder.."/assets")then
-makefolder("WindUI/"..aw.Folder.."/assets")
+if not isfolder("AxiomUI/"..aw.Folder.."/assets")then
+makefolder("AxiomUI/"..aw.Folder.."/assets")
 end
 if not isfolder(aw.Folder)then
 makefolder(aw.Folder)
@@ -37504,7 +37504,7 @@ aw.UIElements.SideBar,
 aw.UIElements.SideBarContainer.Content,
 aw,
 3,
-av.WindUI
+av.AxiomUI
 )
 end
 
@@ -37790,7 +37790,7 @@ Headers={["User-Agent"]="Roblox/Exploit"},
 writefile(r,u)
 end)
 if not u then
-warn("[ WindUI.Window.Background ] Failed to download video: "..tostring(v))
+warn("[ AxiomUI.Window.Background ] Failed to download video: "..tostring(v))
 end
 end
 
@@ -37798,9 +37798,9 @@ local u,v=pcall(function()
 return getcustomasset(r)
 end)
 if not u then
-warn("[ WindUI.Window.Background ] Failed to load custom asset: "..tostring(v))
+warn("[ AxiomUI.Window.Background ] Failed to load custom asset: "..tostring(v))
 end
-warn"[ WindUI.Window.Background ] VideoFrame may not work with custom video"
+warn"[ AxiomUI.Window.Background ] VideoFrame may not work with custom video"
 l=v
 end
 
@@ -37949,7 +37949,7 @@ AnchorPoint=Vector2.new(0.5,0.5),
 Active=true,
 
 },{
-av.WindUI.UIScaleObj,
+av.AxiomUI.UIScaleObj,
 aw.AcrylicPaint and aw.AcrylicPaint.Frame or nil,
 b,
 an.NewRoundFrame(aw.UICorner,"Squircle",{
@@ -38098,19 +38098,19 @@ PaddingBottom=UDim.new(0,aw.UIPadding),
 an.AddSignal(aw.UIElements.Main.Main.Topbar.Left:GetPropertyChangedSignal"AbsoluteSize",function()
 local z=0
 local A=aw.UIElements.Main.Main.Topbar.Right.UIListLayout.AbsoluteContentSize.X
-/av.WindUI.UIScale
+/av.AxiomUI.UIScale
 
-z=aw.UIElements.Main.Main.Topbar.Left.AbsoluteSize.X/av.WindUI.UIScale
+z=aw.UIElements.Main.Main.Topbar.Left.AbsoluteSize.X/av.AxiomUI.UIScale
 if aw.Topbar.ButtonsType~="Default"then
 z=z+A+aw.UIPadding-4
 end
 
 aw.UIElements.Main.Main.Topbar.Center.Position=
-UDim2.new(0,z+(aw.UIPadding/av.WindUI.UIScale),0.5,0)
+UDim2.new(0,z+(aw.UIPadding/av.AxiomUI.UIScale),0.5,0)
 aw.UIElements.Main.Main.Topbar.Center.Size=UDim2.new(
 1,
 -z
--(aw.UIPadding/av.WindUI.UIScale)
+-(aw.UIPadding/av.AxiomUI.UIScale)
 -(aw.Topbar.ButtonsType=="Default"and A+aw.UIPadding or 0),
 1,
 0
@@ -38121,7 +38121,7 @@ if aw.Topbar.ButtonsType~="Default"then
 an.AddSignal(aw.UIElements.Main.Main.Topbar.Right:GetPropertyChangedSignal"AbsoluteSize",function()
 aw.UIElements.Main.Main.Topbar.Left.Position=UDim2.new(
 0,
-(aw.UIElements.Main.Main.Topbar.Right.AbsoluteSize.X/av.WindUI.UIScale)+aw.UIPadding-4,
+(aw.UIElements.Main.Main.Topbar.Right.AbsoluteSize.X/av.AxiomUI.UIScale)+aw.UIPadding-4,
 0,
 0
 )
@@ -38319,7 +38319,7 @@ end
 aw.UIElements.BackgroundGradient=an.NewRoundFrame(aw.UICorner,"Squircle",{
 Size=UDim2.new(1,0,1,0),
 Parent=aw.UIElements.Main.Background,
-ImageTransparency=aw.Transparent and av.WindUI.TransparencyValue or 0,
+ImageTransparency=aw.Transparent and av.AxiomUI.TransparencyValue or 0,
 },{
 A,
 })
@@ -38419,7 +38419,7 @@ end
 
 function aw.SetBackgroundTransparency(A,B)
 local C=math.floor(tonumber(B)*10+0.5)/10
-av.WindUI.TransparencyValue=C
+av.AxiomUI.TransparencyValue=C
 aw:ToggleTransparency(C>0)
 end
 
@@ -38444,9 +38444,9 @@ local function SetSize(C)
 ap(aw.UIElements.Main,0.45,{
 Size=not aw.IsFullscreen and B or UDim2.new(
 0,
-(av.WindUI.ScreenGui.AbsoluteSize.X-20)/av.WindUI.UIScale,
+(av.AxiomUI.ScreenGui.AbsoluteSize.X-20)/av.AxiomUI.UIScale,
 0,
-(av.WindUI.ScreenGui.AbsoluteSize.Y-20-52)/av.WindUI.UIScale
+(av.AxiomUI.ScreenGui.AbsoluteSize.Y-20-52)/av.AxiomUI.UIScale
 ),
 },Enum.EasingStyle.Quint,Enum.EasingDirection.Out):Play()
 
@@ -38480,7 +38480,7 @@ aw.IsFullscreen=not F
 SetSize(true)
 end
 
-an.AddSignal(av.WindUI.ScreenGui:GetPropertyChangedSignal"AbsoluteSize",function()
+an.AddSignal(av.AxiomUI.ScreenGui:GetPropertyChangedSignal"AbsoluteSize",function()
 if aw.IsFullscreen then
 SetSize()
 end
@@ -38524,7 +38524,7 @@ function aw.OnDestroy(C,F)
 aw.OnDestroyCallback=F
 end
 
-if av.WindUI.UseAcrylic then
+if av.AxiomUI.UseAcrylic then
 aw.AcrylicPaint.AddParent(aw.UIElements.Main)
 end
 
@@ -38573,7 +38573,7 @@ end
 aw.UIElements.Main.Background.ImageTransparency=1
 ap(aw.UIElements.Main.Background,0.4,{
 
-ImageTransparency=aw.Transparent and av.WindUI.TransparencyValue or 0,
+ImageTransparency=aw.Transparent and av.AxiomUI.TransparencyValue or 0,
 },Enum.EasingStyle.Exponential,Enum.EasingDirection.Out):Play()
 
 if i then
@@ -38636,7 +38636,7 @@ aw.UIElements.Main.Visible=true
 
 aw.UIElements.Main:WaitForChild"Main".Visible=true
 
-av.WindUI:ToggleAcrylic(true)
+av.AxiomUI:ToggleAcrylic(true)
 
 end)
 end
@@ -38653,7 +38653,7 @@ an.SafeCallback(aw.OnCloseCallback)
 end)
 end
 
-av.WindUI:ToggleAcrylic(false)
+av.AxiomUI:ToggleAcrylic(false)
 
 if aw.UIElements.Main and aw.UIElements.Main:WaitForChild"Main"then
 aw.UIElements.Main.Main.Visible=false
@@ -38745,10 +38745,10 @@ aw.Destroyed=true
 
 task.wait(0.4)
 
-av.WindUI.ScreenGui:Destroy()
-av.WindUI.NotificationGui:Destroy()
-av.WindUI.DropdownGui:Destroy()
-av.WindUI.TooltipGui:Destroy()
+av.AxiomUI.ScreenGui:Destroy()
+av.AxiomUI.NotificationGui:Destroy()
+av.AxiomUI.DropdownGui:Destroy()
+av.AxiomUI.TooltipGui:Destroy()
 
 an.DisconnectAll()
 
@@ -38772,9 +38772,9 @@ end
 function aw.ToggleTransparency(C,F)
 
 aw.Transparent=F
-av.WindUI.Transparent=F
+av.AxiomUI.Transparent=F
 
-aw.UIElements.Main.Background.ImageTransparency=F and av.WindUI.TransparencyValue or 0
+aw.UIElements.Main.Background.ImageTransparency=F and av.AxiomUI.TransparencyValue or 0
 
 
 end
@@ -38817,12 +38817,12 @@ return F
 end
 
 function aw.GetUIScale(C,F)
-return av.WindUI.UIScale
+return av.AxiomUI.UIScale
 end
 
 function aw.SetUIScale(C,F)
-av.WindUI.UIScale=F
-ap(av.WindUI.UIScaleObj,0.2,{Scale=F},Enum.EasingStyle.Quint,Enum.EasingDirection.Out):Play()
+av.AxiomUI.UIScale=F
+ap(av.AxiomUI.UIScaleObj,0.2,{Scale=F},Enum.EasingStyle.Quint,Enum.EasingDirection.Out):Play()
 return aw
 end
 
@@ -38904,7 +38904,7 @@ end
 
 local C=a.load'ag'
 local F=a.load'ah'
-local G=C.Init(aw,av.WindUI,av.WindUI.TooltipGui)
+local G=C.Init(aw,av.AxiomUI,av.AxiomUI.TooltipGui)
 G:OnChange(function(H)
 aw.CurrentTab=H
 end)
@@ -38913,7 +38913,7 @@ aw.TabModule=G
 
 function aw.Tab(H,J)
 J.Parent=aw.UIElements.SideBar.Frame
-return G.New(J,av.WindUI.UIScale)
+return G.New(J,av.AxiomUI.UIScale)
 end
 
 function aw.SelectTab(H,J)
@@ -38925,7 +38925,7 @@ return F.New(
 J,
 aw.UIElements.SideBar.Frame,
 aw.Folder,
-av.WindUI.UIScale,
+av.AxiomUI.UIScale,
 aw
 )
 end
@@ -38987,7 +38987,7 @@ Buttons=L.Buttons or{},
 
 TextPadding=14,
 }
-local N=H.Create(false,"Dialog",aw,av.WindUI,aw.UIElements.Main.Main)
+local N=H.Create(false,"Dialog",aw,av.AxiomUI,aw.UIElements.Main.Main)
 
 N.UIElements.Main.Size=UDim2.new(0,M.Width,0,0)
 
@@ -39226,7 +39226,7 @@ M.Window=aw
 return at:New(M,aw.UIElements.Main.Main.Topbar.Center.Holder)
 end
 
-local L=av.WindUI.GenerateGUID()
+local L=av.AxiomUI.GenerateGUID()
 
 local function startResizing(M)
 if aw.CanResize then
@@ -39240,11 +39240,11 @@ ap(az.ImageLabel,0.1,{ImageTransparency=0.35}):Play()
 
 an.AddSignal(M.Changed,function()
 if M.UserInputState==Enum.UserInputState.End then
-if av.WindUI.CurrentInput and av.WindUI.CurrentInput~=L then
+if av.AxiomUI.CurrentInput and av.AxiomUI.CurrentInput~=L then
 return
 end
 
-av.WindUI.CurrentInput=nil
+av.AxiomUI.CurrentInput=nil
 
 isResizing=false
 aA.Active=false
@@ -39261,10 +39261,10 @@ if
 M.UserInputType==Enum.UserInputType.MouseButton1
 or M.UserInputType==Enum.UserInputType.Touch
 then
-if av.WindUI.CurrentInput and av.WindUI.CurrentInput~=L then
+if av.AxiomUI.CurrentInput and av.AxiomUI.CurrentInput~=L then
 return
 end
-av.WindUI.CurrentInput=L
+av.AxiomUI.CurrentInput=L
 
 if aw.CanResize then
 startResizing(M)
@@ -39298,7 +39298,7 @@ end
 end)
 
 an.AddSignal(az.MouseEnter,function()
-if av.WindUI.CurrentInput and av.WindUI.CurrentInput~=L then
+if av.AxiomUI.CurrentInput and av.AxiomUI.CurrentInput~=L then
 return
 end
 if not isResizing then
@@ -39306,7 +39306,7 @@ ap(az.ImageLabel,0.1,{ImageTransparency=0.35}):Play()
 end
 end)
 an.AddSignal(az.MouseLeave,function()
-if av.WindUI.CurrentInput and av.WindUI.CurrentInput~=L then
+if av.AxiomUI.CurrentInput and av.AxiomUI.CurrentInput~=L then
 return
 end
 if not isResizing then
@@ -39556,7 +39556,7 @@ Scale=aa.UIScale,
 aa.UIScaleObj=ax
 
 aa.ScreenGui=at("ScreenGui",{
-Name="WindUI",
+Name="AxiomUI",
 Parent=aw,
 IgnoreGuiInset=true,
 ScreenInsets="None",
@@ -39584,17 +39584,17 @@ Name="ToolTips",
 })
 
 aa.NotificationGui=at("ScreenGui",{
-Name="WindUI/Notifications",
+Name="AxiomUI/Notifications",
 Parent=aw,
 IgnoreGuiInset=true,
 })
 aa.DropdownGui=at("ScreenGui",{
-Name="WindUI/Dropdowns",
+Name="AxiomUI/Dropdowns",
 Parent=aw,
 IgnoreGuiInset=true,
 })
 aa.TooltipGui=at("ScreenGui",{
-Name="WindUI/Tooltips",
+Name="AxiomUI/Tooltips",
 Parent=aw,
 IgnoreGuiInset=true,
 })
@@ -39744,7 +39744,7 @@ return f
 end
 
 function aa.Popup(az,aA)
-aA.WindUI=aa
+aA.AxiomUI=aa
 return a.load'A'.new(aA,aa.ScreenGui.Popups)
 end
 
@@ -39759,8 +39759,8 @@ function aa.CreateWindow(az,aA)
 local aB=a.load'ak'
 
 if not am:IsStudio()and writefile then
-if not isfolder"WindUI"then
-makefolder"WindUI"
+if not isfolder"AxiomUI"then
+makefolder"AxiomUI"
 end
 if aA.Folder then
 makefolder(aA.Folder)
@@ -39769,7 +39769,7 @@ makefolder(aA.Title)
 end
 end
 
-aA.WindUI=aa
+aA.AxiomUI=aa
 aA.Window=aa.Window
 aA.Parent=aa.ScreenGui.Window
 

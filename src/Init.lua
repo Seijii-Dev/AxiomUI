@@ -1,4 +1,4 @@
-local WindUI = {
+local AxiomUI = {
 	Window = nil,
 	Theme = nil,
 	Creator = require("./modules/Creator"),
@@ -30,7 +30,7 @@ local cloneref = (cloneref or clonereference or function(instance)
 	return instance
 end)
 
-WindUI.cloneref = cloneref
+AxiomUI.cloneref = cloneref
 
 local HttpService = cloneref(game:GetService("HttpService"))
 local Players = cloneref(game:GetService("Players"))
@@ -38,11 +38,11 @@ local CoreGui = cloneref(game:GetService("CoreGui"))
 local RunService = cloneref(game:GetService("RunService"))
 local UserInputService = cloneref(game:GetService("UserInputService"))
 
-function WindUI.GenerateGUID()
+function AxiomUI.GenerateGUID()
 	return HttpService:GenerateGUID(false)
 end
 
-local CurInput = WindUI.GenerateGUID()
+local CurInput = AxiomUI.GenerateGUID()
 
 UserInputService.InputBegan:Connect(function(Input, GameProcessed)
 	--[[if GameProcessed then
@@ -54,23 +54,23 @@ UserInputService.InputBegan:Connect(function(Input, GameProcessed)
 			Input.UserInputType == Enum.UserInputType.MouseButton1
 			or Input.UserInputType == Enum.UserInputType.Touch
 		then
-			if WindUI.CurrentInput and WindUI.CurrentInput ~= CurInput then
+			if AxiomUI.CurrentInput and AxiomUI.CurrentInput ~= CurInput then
 				return
 			end
 
-			WindUI.CurrentInput = CurInput
+			AxiomUI.CurrentInput = CurInput
 			--print(CurInput)
-			--WindUI.InputStartedOnUI = false
+			--AxiomUI.InputStartedOnUI = false
 		end
 	end)
 end)
 UserInputService.InputEnded:Connect(function(Input, GameProcessed)
 	if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
-		if WindUI.CurrentInput and WindUI.CurrentInput ~= CurInput then
+		if AxiomUI.CurrentInput and AxiomUI.CurrentInput ~= CurInput then
 			return
 		end
 
-		WindUI.CurrentInput = nil
+		AxiomUI.CurrentInput = nil
 	end
 end)
 
@@ -78,17 +78,17 @@ local LocalPlayer = Players.LocalPlayer or nil
 
 local Package = HttpService:JSONDecode(require("../build/package"))
 if Package then
-	WindUI.Version = Package.version
+	AxiomUI.Version = Package.version
 end
 
 local KeySystem = require("./components/KeySystem")
 
-local Creator = WindUI.Creator
+local Creator = AxiomUI.Creator
 
 local New = Creator.New
 
 --local Tween = Creator.Tween
---local ServicesModule = WindUI.Services
+--local ServicesModule = AxiomUI.Services
 
 local Acrylic = require("./utils/Acrylic/Init")
 
@@ -97,13 +97,13 @@ local ProtectGui = protectgui or (syn and syn.protect_gui) or function() end
 local GUIParent = gethui and gethui() or (CoreGui or LocalPlayer:WaitForChild("PlayerGui"))
 
 local UIScaleObj = New("UIScale", {
-	Scale = WindUI.UIScale,
+	Scale = AxiomUI.UIScale,
 })
 
-WindUI.UIScaleObj = UIScaleObj
+AxiomUI.UIScaleObj = UIScaleObj
 
-WindUI.ScreenGui = New("ScreenGui", {
-	Name = "WindUI",
+AxiomUI.ScreenGui = New("ScreenGui", {
+	Name = "AxiomUI",
 	Parent = GUIParent,
 	IgnoreGuiInset = true,
 	ScreenInsets = "None",
@@ -130,111 +130,111 @@ WindUI.ScreenGui = New("ScreenGui", {
 	}),
 })
 
-WindUI.NotificationGui = New("ScreenGui", {
-	Name = "WindUI/Notifications",
+AxiomUI.NotificationGui = New("ScreenGui", {
+	Name = "AxiomUI/Notifications",
 	Parent = GUIParent,
 	IgnoreGuiInset = true,
 })
-WindUI.DropdownGui = New("ScreenGui", {
-	Name = "WindUI/Dropdowns",
+AxiomUI.DropdownGui = New("ScreenGui", {
+	Name = "AxiomUI/Dropdowns",
 	Parent = GUIParent,
 	IgnoreGuiInset = true,
 })
-WindUI.TooltipGui = New("ScreenGui", {
-	Name = "WindUI/Tooltips",
+AxiomUI.TooltipGui = New("ScreenGui", {
+	Name = "AxiomUI/Tooltips",
 	Parent = GUIParent,
 	IgnoreGuiInset = true,
 })
-ProtectGui(WindUI.ScreenGui)
-ProtectGui(WindUI.NotificationGui)
-ProtectGui(WindUI.DropdownGui)
-ProtectGui(WindUI.TooltipGui)
+ProtectGui(AxiomUI.ScreenGui)
+ProtectGui(AxiomUI.NotificationGui)
+ProtectGui(AxiomUI.DropdownGui)
+ProtectGui(AxiomUI.TooltipGui)
 
-Creator.Init(WindUI)
+Creator.Init(AxiomUI)
 
-function WindUI:SetParent(parent)
-	if WindUI.ScreenGui then
-		WindUI.ScreenGui.Parent = parent
+function AxiomUI:SetParent(parent)
+	if AxiomUI.ScreenGui then
+		AxiomUI.ScreenGui.Parent = parent
 	end
-	if WindUI.NotificationGui then
-		WindUI.NotificationGui.Parent = parent
+	if AxiomUI.NotificationGui then
+		AxiomUI.NotificationGui.Parent = parent
 	end
-	if WindUI.DropdownGui then
-		WindUI.DropdownGui.Parent = parent
+	if AxiomUI.DropdownGui then
+		AxiomUI.DropdownGui.Parent = parent
 	end
-	if WindUI.TooltipGui then
-		WindUI.TooltipGui.Parent = parent
+	if AxiomUI.TooltipGui then
+		AxiomUI.TooltipGui.Parent = parent
 	end
 end
-math.clamp(WindUI.TransparencyValue, 0, 1)
+math.clamp(AxiomUI.TransparencyValue, 0, 1)
 
-local Holder = WindUI.NotificationModule.Init(WindUI.NotificationGui)
+local Holder = AxiomUI.NotificationModule.Init(AxiomUI.NotificationGui)
 
-function WindUI:Notify(Config)
+function AxiomUI:Notify(Config)
 	Config.Holder = Holder.Frame
-	Config.Window = WindUI.Window
-	--Config.WindUI = WindUI
-	return WindUI.NotificationModule.New(Config)
+	Config.Window = AxiomUI.Window
+	--Config.AxiomUI = AxiomUI
+	return AxiomUI.NotificationModule.New(Config)
 end
 
-function WindUI:SetNotificationLower(Val)
+function AxiomUI:SetNotificationLower(Val)
 	Holder.SetLower(Val)
 end
 
-function WindUI:SetFont(FontId)
+function AxiomUI:SetFont(FontId)
 	Creator.UpdateFont(FontId)
 end
 
-function WindUI:OnThemeChange(func)
-	WindUI.OnThemeChangeFunction = func
+function AxiomUI:OnThemeChange(func)
+	AxiomUI.OnThemeChangeFunction = func
 end
 
-function WindUI:AddTheme(LTheme)
-	WindUI.Themes[LTheme.Name] = LTheme
+function AxiomUI:AddTheme(LTheme)
+	AxiomUI.Themes[LTheme.Name] = LTheme
 	return LTheme
 end
 
-function WindUI:SetTheme(Value)
-	if WindUI.Themes[Value] then
-		WindUI.Theme = WindUI.Themes[Value]
-		Creator.SetTheme(WindUI.Themes[Value])
+function AxiomUI:SetTheme(Value)
+	if AxiomUI.Themes[Value] then
+		AxiomUI.Theme = AxiomUI.Themes[Value]
+		Creator.SetTheme(AxiomUI.Themes[Value])
 
-		if WindUI.OnThemeChangeFunction then
-			WindUI.OnThemeChangeFunction(Value)
+		if AxiomUI.OnThemeChangeFunction then
+			AxiomUI.OnThemeChangeFunction(Value)
 		end
 
-		return WindUI.Themes[Value]
+		return AxiomUI.Themes[Value]
 	end
 	return nil
 end
 
-function WindUI:GetThemes()
-	return WindUI.Themes
+function AxiomUI:GetThemes()
+	return AxiomUI.Themes
 end
-function WindUI:GetCurrentTheme()
-	return WindUI.Theme.Name
+function AxiomUI:GetCurrentTheme()
+	return AxiomUI.Theme.Name
 end
-function WindUI:GetTransparency()
-	return WindUI.Transparent or false
+function AxiomUI:GetTransparency()
+	return AxiomUI.Transparent or false
 end
-function WindUI:GetWindowSize()
-	return WindUI.Window.UIElements.Main.Size
+function AxiomUI:GetWindowSize()
+	return AxiomUI.Window.UIElements.Main.Size
 end
-function WindUI:Localization(LocalizationConfig)
-	return WindUI.LocalizationModule:New(LocalizationConfig, Creator)
+function AxiomUI:Localization(LocalizationConfig)
+	return AxiomUI.LocalizationModule:New(LocalizationConfig, Creator)
 end
 
-function WindUI:SetLanguage(Value)
+function AxiomUI:SetLanguage(Value)
 	if Creator.Localization then
 		return Creator.SetLanguage(Value)
 	end
 	return false
 end
 
-function WindUI:ToggleAcrylic(Value)
-	if WindUI.Window and WindUI.Window.AcrylicPaint and WindUI.Window.AcrylicPaint.Model then
-		WindUI.Window.Acrylic = Value
-		WindUI.Window.AcrylicPaint.Model.Transparency = Value and 0.98 or 1
+function AxiomUI:ToggleAcrylic(Value)
+	if AxiomUI.Window and AxiomUI.Window.AcrylicPaint and AxiomUI.Window.AcrylicPaint.Model then
+		AxiomUI.Window.Acrylic = Value
+		AxiomUI.Window.AcrylicPaint.Model.Transparency = Value and 0.98 or 1
 		if Value then
 			Acrylic.Enable()
 		else
@@ -243,7 +243,7 @@ function WindUI:ToggleAcrylic(Value)
 	end
 end
 
-function WindUI:Gradient(stops, props)
+function AxiomUI:Gradient(stops, props)
 	local colorSequence = {}
 	local transparencySequence = {}
 
@@ -290,24 +290,24 @@ function WindUI:Gradient(stops, props)
 	return gradientData
 end
 
-function WindUI:Popup(PopupConfig)
-	PopupConfig.WindUI = WindUI
-	return require("./components/popup/Init").new(PopupConfig, WindUI.ScreenGui.Popups)
+function AxiomUI:Popup(PopupConfig)
+	PopupConfig.AxiomUI = AxiomUI
+	return require("./components/popup/Init").new(PopupConfig, AxiomUI.ScreenGui.Popups)
 end
 
-WindUI.Themes = require("./themes/Init")(WindUI, Creator)
+AxiomUI.Themes = require("./themes/Init")(AxiomUI, Creator)
 
-Creator.Themes = WindUI.Themes
+Creator.Themes = AxiomUI.Themes
 
-WindUI:SetTheme("Dark")
-WindUI:SetLanguage(Creator.Language)
+AxiomUI:SetTheme("Dark")
+AxiomUI:SetLanguage(Creator.Language)
 
-function WindUI:CreateWindow(Config)
+function AxiomUI:CreateWindow(Config)
 	local CreateWindow = require("./components/window/Init")
 
 	if not RunService:IsStudio() and writefile then
-		if not isfolder("WindUI") then
-			makefolder("WindUI")
+		if not isfolder("AxiomUI") then
+			makefolder("AxiomUI")
 		end
 		if Config.Folder then
 			makefolder(Config.Folder)
@@ -316,20 +316,20 @@ function WindUI:CreateWindow(Config)
 		end
 	end
 
-	Config.WindUI = WindUI
-	Config.Window = WindUI.Window
-	Config.Parent = WindUI.ScreenGui.Window
+	Config.AxiomUI = AxiomUI
+	Config.Window = AxiomUI.Window
+	Config.Parent = AxiomUI.ScreenGui.Window
 
-	if WindUI.Window then
+	if AxiomUI.Window then
 		warn("You cannot create more than one window")
 		return
 	end
 
 	local CanLoadWindow = true
 
-	local Theme = WindUI.Themes[Config.Theme or "Dark"]
+	local Theme = AxiomUI.Themes[Config.Theme or "Dark"]
 
-	--WindUI.Theme = Theme
+	--AxiomUI.Theme = Theme
 	Creator.SetTheme(Theme)
 
 	local hwid = gethwid or function()
@@ -382,7 +382,7 @@ function WindUI:CreateWindow(Config)
 				local isSuccess = false
 
 				for _, i in next, Config.KeySystem.API do
-					local serviceData = WindUI.Services[i.Type]
+					local serviceData = AxiomUI.Services[i.Type]
 					if serviceData then
 						local args = {}
 						for _, argName in next, serviceData.Args do
@@ -414,19 +414,19 @@ function WindUI:CreateWindow(Config)
 
 	local Window = CreateWindow(Config)
 
-	WindUI.Transparent = Config.Transparent
-	WindUI.Window = Window
+	AxiomUI.Transparent = Config.Transparent
+	AxiomUI.Window = Window
 
 	if Config.Acrylic then
 		Acrylic.init()
 	end
 
 	-- function Window:ToggleTransparency(Value)
-	--     WindUI.Transparent = Value
-	--     WindUI.Window.Transparent = Value
+	--     AxiomUI.Transparent = Value
+	--     AxiomUI.Window.Transparent = Value
 
-	--     Window.UIElements.Main.Background.BackgroundTransparency = Value and WindUI.TransparencyValue or 0
-	--     Window.UIElements.Main.Background.ImageLabel.ImageTransparency = Value and WindUI.TransparencyValue or 0
+	--     Window.UIElements.Main.Background.BackgroundTransparency = Value and AxiomUI.TransparencyValue or 0
+	--     Window.UIElements.Main.Background.ImageLabel.ImageTransparency = Value and AxiomUI.TransparencyValue or 0
 	--     Window.UIElements.Main.Gradient.UIGradient.Transparency = NumberSequence.new{
 	--         NumberSequenceKeypoint.new(0, 1),
 	--         NumberSequenceKeypoint.new(1, Value and 0.85 or 0.7),
@@ -436,4 +436,4 @@ function WindUI:CreateWindow(Config)
 	return Window
 end
 
-return WindUI
+return AxiomUI
