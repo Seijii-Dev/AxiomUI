@@ -28253,6 +28253,66 @@ end
 return aa end function a.B()
 return function(aa,ab)
 return{
+Axiom={
+Name="Axiom",
+
+
+Accent=Color3.fromHex"#8B5CF6",
+Dialog=Color3.fromHex"#151827",
+Outline=Color3.fromHex"#64748B",
+Text=Color3.fromHex"#F8FAFC",
+Placeholder=Color3.fromHex"#94A3B8",
+Background=Color3.fromHex"#080B14",
+Button=Color3.fromHex"#7C3AED",
+Icon=Color3.fromHex"#A78BFA",
+Toggle=Color3.fromHex"#22C55E",
+Slider=Color3.fromHex"#22D3EE",
+Checkbox=Color3.fromHex"#22D3EE",
+Primary=Color3.fromHex"#22D3EE",
+White=Color3.fromHex"#FFFFFF",
+
+WindowBackground=Color3.fromHex"#0B1020",
+WindowTopbarTitle=Color3.fromHex"#FFFFFF",
+WindowTopbarAuthor=Color3.fromHex"#94A3B8",
+WindowTopbarIcon=Color3.fromHex"#A78BFA",
+WindowTopbarButtonIcon=Color3.fromHex"#CBD5E1",
+WindowSearchBarBackground=Color3.fromHex"#151D31",
+WindowShadow=Color3.fromHex"#020617",
+WindowShadowTransparency=0.35,
+
+PanelBackground=Color3.fromHex"#111827",
+PanelBackgroundTransparency=0.08,
+ElementBackground=Color3.fromHex"#172033",
+ElementBackgroundTransparency=0,
+ElementBackgroundHover=Color3.fromHex"#202B43",
+ElementTitle=Color3.fromHex"#F8FAFC",
+ElementDesc=Color3.fromHex"#94A3B8",
+ElementIcon=Color3.fromHex"#A78BFA",
+
+TabBackground=Color3.fromHex"#111827",
+TabBackgroundHover=Color3.fromHex"#1B263D",
+TabBackgroundHoverTransparency=0,
+TabBackgroundActive=Color3.fromHex"#263252",
+TabBackgroundActiveTransparency=0,
+TabText=Color3.fromHex"#CBD5E1",
+TabTextTransparency=0.15,
+TabTextTransparencyActive=0,
+TabTitle=Color3.fromHex"#F8FAFC",
+TabIcon=Color3.fromHex"#A78BFA",
+TabIconTransparency=0.25,
+TabIconTransparencyActive=0,
+TabBorder=Color3.fromHex"#8B5CF6",
+TabBorderTransparency=1,
+TabBorderTransparencyActive=0.15,
+
+LabelBackground=Color3.fromHex"#0F172A",
+LabelBackgroundTransparency=0,
+SearchBarBorder=Color3.fromHex"#475569",
+SearchBarBorderTransparency=0.35,
+DropdownBackground=Color3.fromHex"#111827",
+DropdownTabBackground=Color3.fromHex"#1E293B",
+},
+
 Dark={
 Name="Dark",
 
@@ -37271,12 +37331,12 @@ BackgroundImageTransparency=av.BackgroundImageTransparency or 0,
 ShadowTransparency=av.ShadowTransparency or 0.6,
 User=av.User or{},
 Footer=av.Footer or{},
-Topbar=av.Topbar or{Height=52,ButtonsType="Default"},
+Topbar=av.Topbar or{Height=58,ButtonsType="Default"},
 
 Size=av.Size,
 
-MinSize=av.MinSize or Vector2.new(560,350),
-MaxSize=av.MaxSize or Vector2.new(850,560),
+MinSize=av.MinSize or Vector2.new(580,380),
+MaxSize=av.MaxSize or Vector2.new(980,680),
 
 TopBarButtonIconSize=av.TopBarButtonIconSize,
 
@@ -37286,7 +37346,7 @@ Radius=av.Radius or 16,
 Transparent=av.Transparent or false,
 HideSearchBar=av.HideSearchBar~=false,
 ScrollBarEnabled=av.ScrollBarEnabled or false,
-SideBarWidth=av.SideBarWidth or 200,
+SideBarWidth=av.SideBarWidth or 216,
 Acrylic=av.Acrylic or false,
 NewElements=av.NewElements or false,
 IgnoreAlerts=av.IgnoreAlerts or false,
@@ -37296,8 +37356,8 @@ OpenButton=av.OpenButton,
 DragFrameSize=160,
 
 Position=UDim2.new(0.5,0,0.5,0),
-UICorner=16,
-UIPadding=14,
+UICorner=18,
+UIPadding=16,
 UIElements={},
 CanDropdown=true,
 Closed=false,
@@ -37319,7 +37379,7 @@ OnDestroyCallback=nil,
 
 IsPC=false,
 
-Gap=5,
+Gap=8,
 
 TopBarButtons={},
 AllElements={},
@@ -37349,7 +37409,7 @@ math.clamp(ax.Y.Offset,aw.MinSize.Y,aw.MaxSize.Y)
 )
 
 if aw.Topbar=={}then
-aw.Topbar={Height=52,ButtonsType="Default"}
+aw.Topbar={Height=58,ButtonsType="Default"}
 end
 
 if not ai:IsStudio()and aw.Folder and writefile then
@@ -39752,7 +39812,7 @@ aa.Themes=a.load'B'(aa,as)
 
 as.Themes=aa.Themes
 
-aa:SetTheme"Dark"
+aa:SetTheme"Axiom"
 aa:SetLanguage(as.Language)
 
 function aa.CreateWindow(az,aA)
@@ -39780,7 +39840,7 @@ end
 
 local b=true
 
-local d=aa.Themes[aA.Theme or"Dark"]
+local d=aa.Themes[aA.Theme or"Axiom"]
 
 
 as.SetTheme(d)
