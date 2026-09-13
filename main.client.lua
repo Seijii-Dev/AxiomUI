@@ -71,14 +71,19 @@ end
 
 -- */  Window  /* --
 local Window = AxiomUI:CreateWindow({
-	Title = ".ftgs hub  |  AxiomUI Example",
+	Title = "AxiomUI  |  Control Center",
+	Author = "Build better interfaces",
 	--Author = "by .ftgs • Footagesus",
 	Folder = "ftgshub",
 	Icon = "solar:folder-2-bold-duotone",
+	Theme = "Axiom",
 	--Theme = "Mellowsi",
 	--IconSize = 22*2,
 	NewElements = true,
-	--Size = UDim2.fromOffset(700,700),
+	Size = UDim2.fromOffset(640, 540),
+	MinSize = Vector2.new(480, 390),
+	MaxSize = Vector2.new(980, 680),
+	SideBarWidth = 216,
 
 	HideSearchBar = false,
 
@@ -97,8 +102,8 @@ local Window = AxiomUI:CreateWindow({
 		),
 	},
 	Topbar = {
-		Height = 44,
-		ButtonsType = "Mac", -- Default or Mac
+		Height = 58,
+		ButtonsType = "Default", -- Default or Mac
 	},
 })
 
@@ -248,6 +253,107 @@ local function tableToClipboard(luau_table, indent)
 	local jsonString = parseJSON(luau_table, indent)
 	setclipboard(jsonString)
 	return jsonString
+end
+
+-- */  Control Center Tab  /* --
+do
+	local DashboardTab = Window:Tab({
+		Title = "Control Center",
+		Desc = "A calmer, clearer workspace",
+		Icon = "layout-dashboard",
+		IconColor = Purple,
+		Border = true,
+	})
+
+	DashboardTab:Section({
+		Title = "Build better interfaces",
+		Desc = "AxiomUI's redesigned dashboard for scripts and components.",
+		TextSize = 20,
+	})
+
+	local Stats = DashboardTab:Group({})
+	Stats:Button({
+		Title = "42",
+		Desc = "Components",
+		Icon = "box",
+		Justify = "Center",
+		Callback = function()
+			AxiomUI:Notify({ Title = "Components", Content = "42 components are available.", Icon = "box" })
+		end,
+	})
+	Stats:Space()
+	Stats:Button({
+		Title = "12",
+		Desc = "Themes",
+		Icon = "palette",
+		Justify = "Center",
+		Callback = function()
+			AxiomUI:Notify({ Title = "Themes", Content = "12 themes are registered.", Icon = "palette" })
+		end,
+	})
+	Stats:Space()
+	Stats:Button({
+		Title = "98%",
+		Desc = "Performance",
+		Icon = "zap",
+		Justify = "Center",
+		Callback = function()
+			AxiomUI:Notify({ Title = "Performance", Content = "The visual system is ready.", Icon = "zap" })
+		end,
+	})
+
+	DashboardTab:Space()
+
+	local LivePreview = DashboardTab:Section({
+		Title = "Live preview",
+		Desc = "Try the redesigned controls and interaction states.",
+		Icon = "eye",
+		Box = true,
+		BoxBorder = true,
+		Opened = true,
+	})
+
+	LivePreview:Toggle({
+		Title = "Enable notifications",
+		Desc = "Show helpful messages in your interface.",
+		Value = true,
+		Callback = function(value)
+			if value then
+				AxiomUI:Notify({ Title = "Notifications enabled", Content = "Helpful messages are active.", Icon = "bell" })
+			end
+		end,
+	})
+	LivePreview:Toggle({
+		Title = "Developer mode",
+		Desc = "Unlock advanced preview controls.",
+		Callback = function(value)
+			AxiomUI:Notify({
+				Title = "Developer mode",
+				Content = value and "Enabled." or "Disabled.",
+				Icon = "code-2",
+			})
+		end,
+	})
+	LivePreview:Slider({
+		Title = "Opacity",
+		Desc = "Adjust the transparency of your interface.",
+		Value = { Min = 0, Max = 100, Default = 72 },
+		Step = 1,
+		IsTooltip = true,
+		Callback = function(value)
+			AxiomUI.TransparencyValue = math.clamp(value / 100, 0, 1)
+		end,
+	})
+
+	DashboardTab:Button({
+		Title = "Apply changes",
+		Desc = "Preview the refreshed notification state.",
+		Icon = "check",
+		Color = Color3.fromHex("#7C3AED"),
+		Callback = function()
+			AxiomUI:Notify({ Title = "Theme applied", Content = "Your preview changes are active.", Icon = "check" })
+		end,
+	})
 end
 
 -- */  About Tab  /* --
